@@ -134,11 +134,13 @@ import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
 
 import com.abc.settings.AbcSettings;
+import com.abc.settings.ButtonSettings;
 import com.abc.settings.FlingSettings;
 import com.abc.settings.NavbarSettings;
 import com.abc.settings.OtherSettings;
 import com.abc.settings.PulseSettings;
 import com.abc.settings.SmartbarSettings;
+
 
 public class SettingsGateway {
 
@@ -263,6 +265,7 @@ public class SettingsGateway {
             DataUsageList.class.getName(),
             RunningServices.class.getName(),
             AbcSettings.class.getName(),
+            ButtonSettings.class.getName(),
             NavbarSettings.class.getName(),
             FlingSettings.class.getName(),
             OtherSettings.class.getName(),
