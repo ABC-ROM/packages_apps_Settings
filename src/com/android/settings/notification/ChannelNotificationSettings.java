@@ -27,6 +27,7 @@ import android.os.AsyncTask;
 import android.provider.Settings;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.PreferenceGroup;
 import android.text.TextUtils;
 import android.text.BidiFormatter;
@@ -222,8 +223,13 @@ public class ChannelNotificationSettings extends NotificationSettingsBase {
 
     private void setupLights() {
         //find light prefs
+        boolean multiColorLed = getResources().getBoolean(com.android.internal.R.bool.config_multiColorNotificationLed);
         mLights = (RestrictedSwitchPreference) findPreference(KEY_LIGHTS);
         mCustomLight = (ColorPickerPreference) findPreference(KEY_CUSTOM_LIGHT);
+        if (!multiColorLed) {
+            PreferenceCategory lightCategory = (PreferenceCategory) findPreference("light_customization");
+            lightCategory.removePreference(mCustomLight);
+        }
         mLightOnTime =(CustomSeekBarPreference) findPreference(KEY_LIGHTS_ON_TIME);
         mLightOffTime = (CustomSeekBarPreference) findPreference(KEY_LIGHTS_OFF_TIME);
         mLightOnZen = (SwitchPreference) findPreference(KEY_LIGHT_ON_ZEN);
